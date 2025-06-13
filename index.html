@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siren Alert LA</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-$END$
+<h1>Siren Alert LA</h1>
+
+<!-- Siren Section -->
+<section id="sirens-section">
+    <h2>Sirener</h2>
+    <h4>Typisk koordinatområde for Los Angeles📍:Latitude (breddegrad): 33.7 → 34.4 Longitude (længdegrad): -118.7 → -118.1 </h4>
+    <button onclick="showSirenForm()" class="btn-green">Opret ny sirene</button>
+
+    <table id="sirens-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Status</th>
+            <th>Ude Af Drift/Disabled</th>
+            <th>Handling</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<!-- Fire Section -->
+<section id="fires-section">
+    <h2>Aktive brande</h2>
+    <button onclick="showFireForm()" class="btn-green">Brandalarm: Opret ny brand</button>
+    <table id="fires-table">
+        <thead>
+        <tr>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Oprettet</th>
+            <th>Status</th>
+            <th>Aktiverede sirener</th>
+            <th>Handling</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<!-- Popup modals: Siren -->
+<div id="popup" class="hidden">
+    <form id="popup-form">
+        <h3>Rediger Sirene</h3>
+        <input type="hidden" id="popup-id">
+        <input type="number" step="any" id="popup-lat" placeholder="Latitude" required>
+        <input type="number" step="any" id="popup-lon" placeholder="Longitude" required>
+        <select id="popup-status">
+            <option value="FRED">FRED</option>
+            <option value="FARE">FARE</option>
+        </select>
+        <label>
+            Ude Af Drift?: <input type="checkbox" id="popup-disabled">
+        </label>
+        <button type="submit" class="btn-green">Gem</button>
+        <button type="button" onclick="closePopup()">Annullér</button>
+    </form>
+</div>
+
+<!-- Popup modals: Fire -->
+<div id="fire-popup" class="hidden">
+    <form id="fire-popup-form">
+        <h3>Opret ny brand</h3>
+        <input type="number" step="any" id="fire-popup-lat" placeholder="Latitude" required>
+        <input type="number" step="any" id="fire-popup-lon" placeholder="Longitude" required>
+        <button type="submit" class="btn-green">Opret</button>
+        <button type="button" onclick="closeFirePopup()">Annullér</button>
+    </form>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
